@@ -9721,7 +9721,6 @@ const main = async () => {
       pull_number: pr_number,
     });
 
-
     /**
      * Contains the sum of all the additions, deletions, and changes
      * in all the files in the Pull Request.
@@ -9729,7 +9728,7 @@ const main = async () => {
     let diffData = {
       additions: 0,
       deletions: 0,
-      changes: 0
+      changes: 0,
     };
 
     // Reference for how to use Array.reduce():
@@ -9742,7 +9741,7 @@ const main = async () => {
     }, diffData);
 
     /**
-     * Loop over all the files changed in the PR and add labels according 
+     * Loop over all the files changed in the PR and add labels according
      * to files types.
      **/
     for (const file of changedFiles) {
@@ -9750,7 +9749,7 @@ const main = async () => {
        * Add labels according to file types.
        */
       const fileExtension = file.filename.split('.').pop();
-      switch(fileExtension) {
+      switch (fileExtension) {
         case 'md':
           await octokit.rest.issues.addLabels({
             owner,
@@ -9758,6 +9757,7 @@ const main = async () => {
             issue_number: pr_number,
             labels: ['markdown'],
           });
+          break;
         case 'js':
           await octokit.rest.issues.addLabels({
             owner,
@@ -9765,19 +9765,22 @@ const main = async () => {
             issue_number: pr_number,
             labels: ['javascript'],
           });
+          break;
         case 'yml':
-          await octokit.rest.issues.addLabels({
-            owner,
-            repo,
-            issue_number: pr_number,
-            labels: ['yaml'],
-          });
         case 'yaml':
           await octokit.rest.issues.addLabels({
             owner,
             repo,
             issue_number: pr_number,
             labels: ['yaml'],
+          });
+          break;
+        default:
+          await octokit.rest.issues.addLabels({
+            owner,
+            repo,
+            issue_number: pr_number,
+            labels: ['other'],
           });
       }
     }
@@ -9795,13 +9798,12 @@ const main = async () => {
         - ${diffData.changes} changes \n
         - ${diffData.additions} additions \n
         - ${diffData.deletions} deletions \n
-      `
+      `,
     });
-
   } catch (error) {
     core.setFailed(error.message);
   }
-}
+};
 
 // Call the main function to run the action
 main();
