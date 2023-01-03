@@ -10,7 +10,8 @@ jobs:
     name: Annotates pull request with metadata
     steps:
       - name: Annotate PR
-        uses: link-/PR-metadata-action@main
+        # uses: link-/PR-metadata-action@main
+        uses: e2e-pipeline-workshop/own-action-pull-request@main
         with:
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
