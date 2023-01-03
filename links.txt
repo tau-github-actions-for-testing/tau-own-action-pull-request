@@ -1,0 +1,3 @@
+https://www.freecodecamp.org/news/build-your-first-javascript-github-action/
+https://stackoverflow.com/questions/58858429/how-to-run-a-github-actions-step-even-if-the-previous-step-fails-while-still-f
+https://dev.to/n3wt0n/finally-custom-github-actions-in-internal-repos-4l91
