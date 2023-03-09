@@ -26,6 +26,15 @@ This action scans all changed files of a pull request and labels the PR based on
 
 It will add the related labels to the pull request, which is depending on the changed files of the pull request. 
 
+### `pr comment`
+It add a comment to the pull request with a summary of changes made in the pull request. e.g. 
+```
+Pull Request #1 has been updated with: 
+  - 1 changes 
+  - 1 additions 
+  - 0 deletions 
+```
+
 ## Example usage
 
 ```yaml
