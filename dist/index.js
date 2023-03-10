@@ -9710,9 +9710,9 @@ const main = async () => {
       deletions: 0,
       changes: 0,
     };
-
+    console.log('Hello, world!');
     let unique = [...new Set(changedFiles)];
-
+    console.log('Hello, world!', changedFiles);
     diffData = unique.reduce((acc, file) => {
       acc.additions += file.additions;
       acc.deletions += file.deletions;
