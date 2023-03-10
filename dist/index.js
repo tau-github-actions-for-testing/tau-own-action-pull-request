@@ -9713,7 +9713,7 @@ const main = async () => {
 
     console.log('Hello, world!', changedFiles);
 
-    diffData = unique.reduce((acc, file) => {
+    diffData = changedFiles.reduce((acc, file) => {
       switch (file.status) {
         case 'modified':
           acc.changes++;
