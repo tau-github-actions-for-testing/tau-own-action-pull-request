@@ -77,6 +77,14 @@ const main = async () => {
             labels: ['yaml'],
           });
           break;
+        case 'html':
+          await octokit.rest.issues.addLabels({
+            owner,
+            repo,
+            issue_number: pr_number,
+            labels: ['html'],
+          });
+          break;
         default:
           await octokit.rest.issues.addLabels({
             owner,

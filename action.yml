@@ -1,5 +1,5 @@
-name: 'PR Metadata Action'
-description: 'Adds pull request file changes as a comment to a newly opened PR'
+name: 'PR Labeler Action'
+description: 'Adds pull request file changes as a comment to a newly opened PR and add the appropiate labels to it'
 inputs:
   owner:
     description: 'The owner of the repository'
