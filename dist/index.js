@@ -9711,7 +9711,9 @@ const main = async () => {
       changes: 0,
     };
 
-    diffData = changedFiles.reduce((acc, file) => {
+    let unique = [...new Set(changedFiles)];
+
+    diffData = unique.reduce((acc, file) => {
       acc.additions += file.additions;
       acc.deletions += file.deletions;
       acc.changes += file.changes;
