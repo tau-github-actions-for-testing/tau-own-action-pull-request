@@ -24,19 +24,31 @@ const main = async () => {
       deletions: 0,
       changes: 0,
     };
-    console.log('Hello, world!');
-    let unique = [...new Set(changedFiles)];
+
     console.log('Hello, world!', changedFiles);
+
     diffData = unique.reduce((acc, file) => {
-      acc.additions += file.additions;
-      acc.deletions += file.deletions;
-      acc.changes += file.changes;
+      switch (file.status) {
+        case 'modified':
+          acc.changes++;
+          break;
+        case 'deleted':
+          acc.deletions++;
+          break;
+        case 'added':
+          acc.additions++;
+          break;
+        default:
+          break;
+      }
       return acc;
     }, diffData);
 
     for (const file of changedFiles) {
       // Add labels according to file types.
       const fileExtension = file.filename.split('.').pop();
+      console.log(file, fileExtension);
+
       switch (fileExtension) {
         case 'md':
           await octokit.rest.issues.addLabels({
