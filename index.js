@@ -32,7 +32,7 @@ const main = async () => {
         case 'modified':
           acc.changes++;
           break;
-        case 'deleted':
+        case 'removed':
           acc.deletions++;
           break;
         case 'added':
@@ -89,14 +89,6 @@ const main = async () => {
             repo,
             issue_number: pr_number,
             labels: ['yaml'],
-          });
-          break;
-        case 'html':
-          await octokit.rest.issues.addLabels({
-            owner,
-            repo,
-            issue_number: pr_number,
-            labels: ['html'],
           });
           break;
         default:
