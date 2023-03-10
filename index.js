@@ -47,7 +47,6 @@ const main = async () => {
     for (const file of changedFiles) {
       // Add labels according to file types.
       const fileExtension = file.filename.split('.').pop();
-      console.log(file, fileExtension);
 
       switch (fileExtension) {
         case 'md':
@@ -89,6 +88,14 @@ const main = async () => {
             repo,
             issue_number: pr_number,
             labels: ['yaml'],
+          });
+          break;
+        case 'html':
+          await octokit.rest.issues.addLabels({
+            owner,
+            repo,
+            issue_number: pr_number,
+            labels: ['html'],
           });
           break;
         default:

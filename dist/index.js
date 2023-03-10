@@ -9718,7 +9718,7 @@ const main = async () => {
         case 'modified':
           acc.changes++;
           break;
-        case 'deleted':
+        case 'removed':
           acc.deletions++;
           break;
         case 'added':
@@ -9733,7 +9733,6 @@ const main = async () => {
     for (const file of changedFiles) {
       // Add labels according to file types.
       const fileExtension = file.filename.split('.').pop();
-      console.log(file, fileExtension);
 
       switch (fileExtension) {
         case 'md':
